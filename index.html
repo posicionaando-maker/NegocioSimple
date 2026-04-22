@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Negocio Simple</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: system-ui, 'Segoe UI', sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+            font-size: 20px;
+        }
+        .header {
+            background: #0a5c4b;
+            color: white;
+            padding: 20px;
+            border-radius: 30px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .producto {
+            background: white;
+            border-radius: 25px;
+            padding: 15px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .info h3 { font-size: 28px; }
+        .precio { font-size: 26px; font-weight: bold; color: #0a5c4b; }
+        .stock { font-size: 18px; color: gray; }
+        .btn-vender {
+            background: #ff8c42;
+            border: none;
+            padding: 12px 20px;
+            font-size: 22px;
+            border-radius: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .btn-gasto {
+            background: #6c757d;
+            margin-top: 10px;
+        }
+        .saldo {
+            background: white;
+            padding: 15px;
+            border-radius: 30px;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 32px;
+            font-weight: bold;
+        }
+        .boton-ayuda {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 60px;
+            padding: 15px 25px;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 1000;
+        }
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .tab {
+            flex: 1;
+            background: white;
+            border: none;
+            padding: 15px;
+            font-size: 22px;
+            border-radius: 30px;
+            cursor: pointer;
+        }
+        .tab.activa {
+            background: #0a5c4b;
+            color: white;
+        }
+        .panel {
+            display: none;
+        }
+        .panel.activo {
+            display: block;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 15px;
+            font-size: 18px;
+            margin: 10px 0;
+            border-radius: 20px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+
+<div class="header" id="header">
+    <h1 id="nombreNegocio">Cargando...</h1>
+</div>
+
+<div class="tabs">
+    <button class="tab activa" onclick="mostrarPanel('tienda')">🛒 Tienda</button>
+    <button class="tab" onclick="mostrarPanel('gastos')">💰 Gastos</button>
+</div>
+
+<div id="panelTienda" class="panel activo">
+    <div class="saldo" id="saldo">
+        💰 Saldo: $0
+    </div>
+    <div id="lista-productos"></div>
+</div>
+
+<div id="panelGastos" class="panel">
+    <div style="background: white; border-radius: 30px; padding: 20px;">
+        <h3>📝 Registrar gasto</h3>
+        <input type="text" id="conceptoGasto" placeholder="Ej: Compra de mercadería">
+        <input type="number" id="montoGasto" placeholder="Monto">
+        <button class="btn-vender" style="width:100%;" onclick="registrarGasto()">✅ Registrar gasto</button>
+        
+        <h3 style="margin-top: 30px;">📋 Últimos gastos</h3>
+        <div id="listaGastos"></div>
+    </div>
+</div>
+
+<button class="boton-ayuda" id="btnAyuda">
+    ❓ ¿Me ayudas?
+</button>
+
+<script>
+    // Leer parámetros de URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const CLIENTE_ID = urlParams.get('cliente') || 'demo';
+    
+    // URLs dinámicas (las vas a generar con el script de Google)
+    // Para cada cliente, creás un enlace tipo:
+    // https://tusitio.com?cliente=almacen_rosa
+    const CONFIG_URLS = {
+        'almacen_rosa': {
+            productos: 'https://drive.google.com/uc?export=download&id=ID_JSON_PRODUCTOS_ROSA',
+            config: 'https://drive.google.com/uc?export=download&id=ID_JSON_CONFIG_ROSA',
+            telefonoAyuda: '5491112345678'
+        },
+        'demo': {
+            productos: 'https://drive.google.com/uc?export=download&id=ID_DEMO',
+            config: 'https://drive.google.com/uc?export=download&id=ID_CONFIG_DEMO',
+            telefonoAyuda: '5491112345678'
+        }
+    };
+    
+    let datosCliente = CONFIG_URLS[CLIENTE_ID] || CONFIG_URLS['demo'];
+    let productos = [];
+    let saldo = localStorage.getItem(`saldo_${CLIENTE_ID}`) ? parseInt(localStorage.getItem(`saldo_${CLIENTE_ID}`)) : 10000;
+    let gastos = JSON.parse(localStorage.getItem(`gastos_${CLIENTE_ID}`)) || [];
+    
+    function mostrarSaldo() {
+        document.getElementById('saldo').innerHTML = `💰 Saldo: $${saldo}`;
+    }
+    
+    function mostrarPanel(panel) {
+        document.querySelectorAll('.panel').forEach(p => p.classList.remove('activo'));
+        document.querySelectorAll('.tab').forEach(t => t.classList.remove('activa'));
+        
+        if (panel === 'tienda') {
+            document.getElementById('panelTienda').classList.add('activo');
+            document.querySelector('.tab').classList.add('activa');
+        } else {
+            document.getElementById('panelGastos').classList.add('activo');
+            document.querySelectorAll('.tab')[1].classList.add('activa');
+            mostrarGastos();
+        }
+    }
+    
+    function registrarGasto() {
+        const concepto = document.getElementById('conceptoGasto').value;
+        const monto = parseInt(document.getElementById('montoGasto').value);
+        
+        if (!concepto || !monto) {
+            alert('Completá concepto y monto');
+            return;
+        }
+        
+        saldo -= monto;
+        gastos.unshift({ fecha: new Date().toLocaleString(), concepto, monto });
+        
+        localStorage.setItem(`saldo_${CLIENTE_ID}`, saldo);
+        localStorage.setItem(`gastos_${CLIENTE_ID}`, JSON.stringify(gastos));
+        
+        mostrarSaldo();
+        mostrarGastos();
+        
+        document.getElementById('conceptoGasto').value = '';
+        document.getElementById('montoGasto').value = '';
+    }
+    
+    function mostrarGastos() {
+        const contenedor = document.getElementById('listaGastos');
+        if (gastos.length === 0) {
+            contenedor.innerHTML = '<p>No hay gastos registrados</p>';
+            return;
+        }
+        
+        contenedor.innerHTML = '';
+        gastos.slice(0, 20).forEach(g => {
+            const div = document.createElement('div');
+            div.style.background = '#f8f9fa';
+            div.style.padding = '12px';
+            div.style.margin = '8px 0';
+            div.style.borderRadius = '20px';
+            div.innerHTML = `<strong>${g.concepto}</strong> - $${g.monto}<br><small>${g.fecha}</small>`;
+            contenedor.appendChild(div);
+        });
+    }
+    
+    function cargarConfiguracion() {
+        fetch(datosCliente.config)
+            .then(res => res.json())
+            .then(config => {
+                document.getElementById('nombreNegocio').innerText = config.nombre_negocio || 'Mi Negocio';
+                document.getElementById('header').style.background = config.color || '#0a5c4b';
+                
+                // Configurar botón de ayuda
+                const telefono = config.telefono_contacto || datosCliente.telefonoAyuda;
+                document.getElementById('btnAyuda').onclick = () => {
+                    window.location.href = `https://wa.me/${telefono}?text=Necesito%20ayuda%20con%20mi%20app%20${CLIENTE_ID}`;
+                };
+            })
+            .catch(err => console.error('Error cargando config:', err));
+    }
+    
+    function cargarProductos() {
+        fetch(datosCliente.productos)
+            .then(res => res.json())
+            .then(data => {
+                productos = data;
+                renderizarProductos();
+            })
+            .catch(err => {
+                document.getElementById('lista-productos').innerHTML = '<p style="color:red;">⚠️ Error cargando productos. Revisá internet.</p>';
+            });
+    }
+    
+    function renderizarProductos() {
+        const contenedor = document.getElementById('lista-productos');
+        contenedor.innerHTML = '';
+        productos.forEach(p => {
+            const div = document.createElement('div');
+            div.className = 'producto';
+            div.innerHTML = `
+                <div class="info">
+                    <h3>${p.nombre}</h3>
+                    <div class="precio">$${p.precio}</div>
+                    <div class="stock">📦 Stock: ${p.stock}</div>
+                </div>
+                <button class="btn-vender" data-id="${p.id}">Vender</button>
+            `;
+            contenedor.appendChild(div);
+        });
+        
+        document.querySelectorAll('.btn-vender').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const id = parseInt(btn.dataset.id);
+                const producto = productos.find(p => p.id === id);
+                if (producto.stock > 0) {
+                    producto.stock--;
+                    saldo += producto.precio;
+                    localStorage.setItem(`saldo_${CLIENTE_ID}`, saldo);
+                    localStorage.setItem(`productos_${CLIENTE_ID}`, JSON.stringify(productos));
+                    renderizarProductos();
+                    mostrarSaldo();
+                } else {
+                    alert('❌ Sin stock de ' + producto.nombre);
+                }
+            });
+        });
+    }
+    
+    // Cargar datos guardados localmente si existen
+    const productosGuardados = localStorage.getItem(`productos_${CLIENTE_ID}`);
+    if (productosGuardados) {
+        productos = JSON.parse(productosGuardados);
+        renderizarProductos();
+    }
+    
+    mostrarSaldo();
+    cargarConfiguracion();
+    cargarProductos();
+</script>
+</body>
+</html>
