@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POS Offline para Negocios en Cuba | Vende sin internet</title>
+    <meta name="description" content="Convierte tu teléfono en POS y catálogo digital. Funciona sin internet. Aparece en Google. Precios desde 2500 CUP/mes.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            line-height: 1.5;
+            color: #1a1a1a;
+            background: #fafafa;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #2c3e50 0%, #1a1a2e 100%);
+            color: white;
+            border-radius: 0 0 30px 30px;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            font-size: 2em;
+            margin-bottom: 15px;
+        }
+        
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+            margin-bottom: 25px;
+        }
+        
+        .btn-whatsapp {
+            display: inline-block;
+            background: #25D366;
+            color: white;
+            padding: 14px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 5px;
+            transition: transform 0.2s;
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid white;
+        }
+        
+        .btn-whatsapp:hover {
+            transform: scale(1.05);
+        }
+        
+        .section {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .section h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+        
+        .beneficios {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .beneficio {
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .beneficio .icono {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .beneficio h3 {
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        
+        .pasos {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .paso {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            background: #f5f5f5;
+            border-radius: 15px;
+        }
+        
+        .paso-numero {
+            background: #2c3e50;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        
+        .precio {
+            border-bottom: 1px solid #eee;
+            padding: 15px 0;
+        }
+        
+        .precio-nombre {
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-bottom: 5px;
+        }
+        
+        .precio-valor {
+            color: #2c3e50;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+        
+        .precio-lista {
+            margin-top: 10px;
+            padding-left: 20px;
+            color: #666;
+        }
+        
+        .testimonio {
+            background: #f0f7ff;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 15px 0;
+            font-style: italic;
+        }
+        
+        .testimonio-autor {
+            margin-top: 10px;
+            font-weight: bold;
+            font-style: normal;
+        }
+        
+        .garantia {
+            text-align: center;
+            background: #e8f5e9;
+            padding: 20px;
+            border-radius: 15px;
+        }
+        
+        .cta-final {
+            text-align: center;
+            background: linear-gradient(135deg, #ff9800, #f57c00);
+            color: white;
+            padding: 40px 20px;
+            border-radius: 20px;
+            margin-top: 20px;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #666;
+            font-size: 0.85em;
+        }
+        
+        @media (max-width: 600px) {
+            .header h1 { font-size: 1.5em; }
+            .section { padding: 20px; }
+            .btn-whatsapp { display: block; margin: 10px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <h1>📱 Vende aunque se vaya el internet</h1>
+            <p>Tu teléfono se convierte en POS y catálogo digital.<br>Funciona sin conexión. Aparece en Google.</p>
+            <a href="https://wa.me/5351234567?text=Hola%2C%20quiero%20vender%20sin%20internet" class="btn-whatsapp">💬 Empezar ahora</a>
+            <a href="#demo" class="btn-whatsapp btn-outline">📱 Ver demo</a>
+        </div>
+    </div>
+    
+    <div class="container">
+        
+        <!-- Problema -->
+        <div class="section">
+            <h2>⚠️ ¿Te suena?</h2>
+            <ul style="margin-left: 20px; color: #555;">
+                <li>➜ Se va la luz y también el internet → pierdes ventas</li>
+                <li>➜ No llevas control de lo que vendiste en el día</li>
+                <li>➜ No sabes qué productos se están acabando</li>
+                <li>➜ Tus clientes te piden fotos y precios una y otra vez</li>
+            </ul>
+            <p style="margin-top: 15px;"><strong>Hay solución. Sigue leyendo.</strong></p>
+        </div>
+        
+        <!-- Solución -->
+        <div class="section">
+            <h2>✅ La solución para ti</h2>
+            <div class="beneficios">
+                <div class="beneficio">
+                    <div class="icono">📱</div>
+                    <h3>POS Offline</h3>
+                    <p>Registras ventas sin internet. El inventario se actualiza solo. Un botón y ya está respaldado.</p>
+                </div>
+                <div class="beneficio">
+                    <div class="icono">🛍️</div>
+                    <h3>Catálogo Digital</h3>
+                    <p>Clientes ven productos, precios y stock... ¡incluso sin internet! Te contactan directo por WhatsApp.</p>
+                </div>
+                <div class="beneficio">
+                    <div class="icono">🔍</div>
+                    <h3>Google te encuentra</h3>
+                    <p>Cuando alguien busque "pan cerca de mí" o "repuestos en tu zona", tu negocio aparecerá.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Cómo funciona -->
+        <div class="section">
+            <h2>📋 ¿Cómo empiezas?</h2>
+            <div class="pasos">
+                <div class="paso">
+                    <div class="paso-numero">1</div>
+                    <div>Me mandas tu lista de productos por WhatsApp</div>
+                </div>
+                <div class="paso">
+                    <div class="paso-numero">2</div>
+                    <div>En 1 día tienes tu POS y catálogo listos</div>
+                </div>
+                <div class="paso">
+                    <div class="paso-numero">3</div>
+                    <div>Empiezas a vender sin preocuparte por el internet</div>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 15px;">🕐 Instalación: 10 minutos (te ayudo paso a paso)</p>
+        </div>
+        
+        <!-- Precios -->
+        <div class="section">
+            <h2>💰 Inversión que se paga sola</h2>
+            
+            <div class="precio">
+                <div class="precio-nombre">Básico</div>
+                <div class="precio-valor">2,500 CUP/mes</div>
+                <div class="precio-lista">
+                    ✓ POS offline<br>
+                    ✓ Catálogo digital<br>
+                    ✓ Actualización diaria<br>
+                    ✓ Soporte por WhatsApp
+                </div>
+            </div>
+            
+            <div class="precio">
+                <div class="precio-nombre">Negocio Digital</div>
+                <div class="precio-valor">5,000 CUP/mes</div>
+                <div class="precio-lista">
+                    ✓ Todo lo anterior<br>
+                    ✓ Google te encuentra (SEO)<br>
+                    ✓ Botón WhatsApp en cada producto<br>
+                    ✓ Reporte semanal de productos más vendidos
+                </div>
+            </div>
+            
+            <div class="precio">
+                <div class="precio-nombre">Premium</div>
+                <div class="precio-valor">8,000 CUP/mes</div>
+                <div class="precio-lista">
+                    ✓ Todo lo anterior<br>
+                    ✓ Códigos QR impresos para tu vitrina<br>
+                    ✓ Backup de tu inventario<br>
+                    ✓ Respuesta en menos de 2 horas
+                </div>
+            </div>
+            
+            <p style="margin-top: 15px; font-size: 0.9em; color: #666;">*Si eres MIPYME o tienes más de 100 productos, escríbeme y ajustamos.</p>
+        </div>
+        
+        <!-- Garantía -->
+        <div class="garantia">
+            <strong>🔒 Garantía 15 días gratis</strong><br>
+            Si no te convence, te devuelvo cada peso.<br>
+            Sin contratos largos. Cancelas cuando quieras.
+        </div>
+        
+        <!-- Testimonios -->
+        <div class="section">
+            <h2>⭐ Casos reales</h2>
+            
+            <div class="testimonio">
+                "He recuperado lo que pago en una sola venta que antes perdía por falta de internet."
+                <div class="testimonio-autor">— Carlos, panadería en Cerro</div>
+            </div>
+            
+            <div class="testimonio">
+                "Mis clientes me encuentran en Google y ya no tengo que estar enviando fotos una por una."
+                <div class="testimonio-autor">— Maricela, tienda de ropa en Guanabacoa</div>
+            </div>
+        </div>
+        
+        <!-- CTA final -->
+        <div class="cta-final">
+            <h3 style="margin-bottom: 15px;">📢 Solo atiendo 10 negocios nuevos este mes</h3>
+            <a href="https://wa.me/5351234567?text=Hola%2C%20quiero%20vender%20sin%20internet" class="btn-whatsapp" style="background: white; color: #f57c00;">💬 Escríbeme al WhatsApp</a>
+            <p style="margin-top: 15px; opacity: 0.9;">Responde en menos de 1 hora</p>
+        </div>
+        
+        <div class="footer">
+            📍 La Habana, Cuba — Soporte en español — Pagas en CUP por Transfermóvil o Enzona
+        </div>
+        
+    </div>
+</body>
+</html>
