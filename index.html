@@ -2,9 +2,11 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>POS Offline para Negocios en Cuba | Vende sin internet</title>
-    <meta name="description" content="Convierte tu teléfono en POS y catálogo digital. Funciona sin internet. Aparece en Google. Precios desde 2500 CUP/mes.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#2c3e50">
+    <meta name="description" content="POS offline y catálogo digital para negocios en Cuba. Funciona sin internet. Aparece en Google. Prueba 15 días gratis.">
+    <title>Negocio Simple - POS Offline para Cuba</title>
+    
     <style>
         * {
             margin: 0;
@@ -55,6 +57,8 @@
             font-weight: bold;
             margin: 5px;
             transition: transform 0.2s;
+            border: none;
+            cursor: pointer;
         }
         
         .btn-outline {
@@ -174,6 +178,43 @@
             border-radius: 15px;
         }
         
+        .demo-productos {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        
+        .demo-card {
+            background: white;
+            border-radius: 15px;
+            padding: 15px;
+            text-align: center;
+            width: 150px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .demo-emoji {
+            font-size: 3em;
+        }
+        
+        .demo-precio {
+            color: #f57c00;
+            font-weight: bold;
+        }
+        
+        .btn-demo {
+            background: #25D366;
+            color: white;
+            border: none;
+            padding: 8px;
+            border-radius: 20px;
+            margin-top: 10px;
+            width: 100%;
+            cursor: pointer;
+        }
+        
         .cta-final {
             text-align: center;
             background: linear-gradient(135deg, #ff9800, #f57c00);
@@ -190,152 +231,327 @@
             font-size: 0.85em;
         }
         
+        .install-banner {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            font-size: 0.9em;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
         @media (max-width: 600px) {
             .header h1 { font-size: 1.5em; }
             .section { padding: 20px; }
             .btn-whatsapp { display: block; margin: 10px; }
+            .demo-card { width: 130px; }
         }
     </style>
 </head>
 <body>
-    <div class="header">
-        <div class="container">
-            <h1>📱 Vende aunque se vaya el internet</h1>
-            <p>Tu teléfono se convierte en POS y catálogo digital.<br>Funciona sin conexión. Aparece en Google.</p>
-            <a href="https://wa.me/5351234567?text=Hola%2C%20quiero%20vender%20sin%20internet" class="btn-whatsapp">💬 Empezar ahora</a>
-            <a href="#demo" class="btn-whatsapp btn-outline">📱 Ver demo</a>
+
+<!-- Banner opcional para promover la instalación -->
+<div id="installBanner" class="install-banner" style="display: none;">
+    📱 Instala esta app: toca ⋮ y luego "Agregar a pantalla de inicio"
+</div>
+
+<div class="header">
+    <div class="container">
+        <h1>📱 Vende aunque se vaya el internet</h1>
+        <p>Tu teléfono se convierte en POS y catálogo digital.<br>Funciona sin conexión. Aparece en Google.</p>
+        <a href="https://wa.me/5351234567?text=Hola%2C%20quiero%20vender%20sin%20internet" class="btn-whatsapp">💬 Empezar ahora</a>
+        <button class="btn-whatsapp btn-outline" onclick="instalarApp()">📲 Instalar esta app</button>
+    </div>
+</div>
+
+<div class="container">
+    
+    <!-- Problema -->
+    <div class="section">
+        <h2>⚠️ ¿Te suena?</h2>
+        <ul style="margin-left: 20px; color: #555;">
+            <li>➜ Se va la luz y también el internet → pierdes ventas</li>
+            <li>➜ No llevas control de lo que vendiste en el día</li>
+            <li>➜ No sabes qué productos se están acabando</li>
+            <li>➜ Tus clientes te piden fotos y precios una y otra vez</li>
+        </ul>
+        <p style="margin-top: 15px;"><strong>Hay solución. Sigue leyendo.</strong></p>
+    </div>
+    
+    <!-- Solución -->
+    <div class="section">
+        <h2>✅ La solución para ti</h2>
+        <div class="beneficios">
+            <div class="beneficio">
+                <div class="icono">📱</div>
+                <h3>POS Offline</h3>
+                <p>Registras ventas sin internet. El inventario se actualiza solo. Un botón y ya está respaldado.</p>
+            </div>
+            <div class="beneficio">
+                <div class="icono">🛍️</div>
+                <h3>Catálogo Digital</h3>
+                <p>Clientes ven productos, precios y stock... ¡incluso sin internet! Te contactan directo por WhatsApp.</p>
+            </div>
+            <div class="beneficio">
+                <div class="icono">🔍</div>
+                <h3>Google te encuentra</h3>
+                <p>Cuando alguien busque "pan cerca de mí" o "repuestos en tu zona", tu negocio aparecerá.</p>
+            </div>
         </div>
     </div>
     
-    <div class="container">
-        
-        <!-- Problema -->
-        <div class="section">
-            <h2>⚠️ ¿Te suena?</h2>
-            <ul style="margin-left: 20px; color: #555;">
-                <li>➜ Se va la luz y también el internet → pierdes ventas</li>
-                <li>➜ No llevas control de lo que vendiste en el día</li>
-                <li>➜ No sabes qué productos se están acabando</li>
-                <li>➜ Tus clientes te piden fotos y precios una y otra vez</li>
-            </ul>
-            <p style="margin-top: 15px;"><strong>Hay solución. Sigue leyendo.</strong></p>
-        </div>
-        
-        <!-- Solución -->
-        <div class="section">
-            <h2>✅ La solución para ti</h2>
-            <div class="beneficios">
-                <div class="beneficio">
-                    <div class="icono">📱</div>
-                    <h3>POS Offline</h3>
-                    <p>Registras ventas sin internet. El inventario se actualiza solo. Un botón y ya está respaldado.</p>
-                </div>
-                <div class="beneficio">
-                    <div class="icono">🛍️</div>
-                    <h3>Catálogo Digital</h3>
-                    <p>Clientes ven productos, precios y stock... ¡incluso sin internet! Te contactan directo por WhatsApp.</p>
-                </div>
-                <div class="beneficio">
-                    <div class="icono">🔍</div>
-                    <h3>Google te encuentra</h3>
-                    <p>Cuando alguien busque "pan cerca de mí" o "repuestos en tu zona", tu negocio aparecerá.</p>
-                </div>
+    <!-- DEMO: Catálogo interactivo -->
+    <div class="section" style="background: #f0f7ff;">
+        <h2>🛍️ Mira cómo funciona (demo)</h2>
+        <p style="text-align: center; margin-bottom: 20px;">Esto es lo que verían tus clientes. Toca cualquier producto.</p>
+        <div class="demo-productos">
+            <div class="demo-card">
+                <div class="demo-emoji">🥖</div>
+                <strong>Pan con lechón</strong>
+                <div class="demo-precio">250 CUP</div>
+                <button class="btn-demo" onclick="alertDemo('Pan con lechón')">💬 Preguntar</button>
+            </div>
+            <div class="demo-card">
+                <div class="demo-emoji">☕</div>
+                <strong>Café cubano</strong>
+                <div class="demo-precio">40 CUP</div>
+                <button class="btn-demo" onclick="alertDemo('Café cubano')">💬 Preguntar</button>
+            </div>
+            <div class="demo-card">
+                <div class="demo-emoji">🧴</div>
+                <strong>Crema humectante</strong>
+                <div class="demo-precio">350 CUP</div>
+                <button class="btn-demo" onclick="alertDemo('Crema humectante')">💬 Preguntar</button>
             </div>
         </div>
-        
-        <!-- Cómo funciona -->
-        <div class="section">
-            <h2>📋 ¿Cómo empiezas?</h2>
-            <div class="pasos">
-                <div class="paso">
-                    <div class="paso-numero">1</div>
-                    <div>Me mandas tu lista de productos por WhatsApp</div>
-                </div>
-                <div class="paso">
-                    <div class="paso-numero">2</div>
-                    <div>En 1 día tienes tu POS y catálogo listos</div>
-                </div>
-                <div class="paso">
-                    <div class="paso-numero">3</div>
-                    <div>Empiezas a vender sin preocuparte por el internet</div>
-                </div>
-            </div>
-            <p style="text-align: center; margin-top: 15px;">🕐 Instalación: 10 minutos (te ayudo paso a paso)</p>
-        </div>
-        
-        <!-- Precios -->
-        <div class="section">
-            <h2>💰 Inversión que se paga sola</h2>
-            
-            <div class="precio">
-                <div class="precio-nombre">Básico</div>
-                <div class="precio-valor">2,500 CUP/mes</div>
-                <div class="precio-lista">
-                    ✓ POS offline<br>
-                    ✓ Catálogo digital<br>
-                    ✓ Actualización diaria<br>
-                    ✓ Soporte por WhatsApp
-                </div>
-            </div>
-            
-            <div class="precio">
-                <div class="precio-nombre">Negocio Digital</div>
-                <div class="precio-valor">5,000 CUP/mes</div>
-                <div class="precio-lista">
-                    ✓ Todo lo anterior<br>
-                    ✓ Google te encuentra (SEO)<br>
-                    ✓ Botón WhatsApp en cada producto<br>
-                    ✓ Reporte semanal de productos más vendidos
-                </div>
-            </div>
-            
-            <div class="precio">
-                <div class="precio-nombre">Premium</div>
-                <div class="precio-valor">8,000 CUP/mes</div>
-                <div class="precio-lista">
-                    ✓ Todo lo anterior<br>
-                    ✓ Códigos QR impresos para tu vitrina<br>
-                    ✓ Backup de tu inventario<br>
-                    ✓ Respuesta en menos de 2 horas
-                </div>
-            </div>
-            
-            <p style="margin-top: 15px; font-size: 0.9em; color: #666;">*Si eres MIPYME o tienes más de 100 productos, escríbeme y ajustamos.</p>
-        </div>
-        
-        <!-- Garantía -->
-        <div class="garantia">
-            <strong>🔒 Garantía 15 días gratis</strong><br>
-            Si no te convence, te devuelvo cada peso.<br>
-            Sin contratos largos. Cancelas cuando quieras.
-        </div>
-        
-        <!-- Testimonios -->
-        <div class="section">
-            <h2>⭐ Casos reales</h2>
-            
-            <div class="testimonio">
-                "He recuperado lo que pago en una sola venta que antes perdía por falta de internet."
-                <div class="testimonio-autor">— Carlos, panadería en Cerro</div>
-            </div>
-            
-            <div class="testimonio">
-                "Mis clientes me encuentran en Google y ya no tengo que estar enviando fotos una por una."
-                <div class="testimonio-autor">— Maricela, tienda de ropa en Guanabacoa</div>
-            </div>
-        </div>
-        
-        <!-- CTA final -->
-        <div class="cta-final">
-            <h3 style="margin-bottom: 15px;">📢 Solo atiendo 10 negocios nuevos este mes</h3>
-            <a href="https://wa.me/5351234567?text=Hola%2C%20quiero%20vender%20sin%20internet" class="btn-whatsapp" style="background: white; color: #f57c00;">💬 Escríbeme al WhatsApp</a>
-            <p style="margin-top: 15px; opacity: 0.9;">Responde en menos de 1 hora</p>
-        </div>
-        
-        <div class="footer">
-            📍 La Habana, Cuba — Soporte en español — Pagas en CUP por Transfermóvil o Enzona
-        </div>
-        
+        <p style="text-align: center; margin-top: 15px; font-size: 0.8em;">*Esto es una muestra. El tuyo tendrá tus productos, fotos y precios reales.</p>
     </div>
+    
+    <!-- Cómo funciona -->
+    <div class="section">
+        <h2>📋 ¿Cómo empiezas?</h2>
+        <div class="pasos">
+            <div class="paso">
+                <div class="paso-numero">1</div>
+                <div>Me mandas tu lista de productos por WhatsApp</div>
+            </div>
+            <div class="paso">
+                <div class="paso-numero">2</div>
+                <div>En 1 día tienes tu POS y catálogo listos</div>
+            </div>
+            <div class="paso">
+                <div class="paso-numero">3</div>
+                <div>Empiezas a vender sin preocuparte por el internet</div>
+            </div>
+        </div>
+        <p style="text-align: center; margin-top: 15px;">🕐 Instalación: 10 minutos (te ayudo paso a paso)</p>
+    </div>
+    
+    <!-- Precios -->
+    <div class="section">
+        <h2>💰 Inversión que se paga sola</h2>
+        
+        <div class="precio">
+            <div class="precio-nombre">Básico</div>
+            <div class="precio-valor">2,500 CUP/mes</div>
+            <div class="precio-lista">
+                ✓ POS offline<br>
+                ✓ Catálogo digital<br>
+                ✓ Actualización diaria<br>
+                ✓ Soporte por WhatsApp
+            </div>
+        </div>
+        
+        <div class="precio">
+            <div class="precio-nombre">Negocio Digital</div>
+            <div class="precio-valor">5,000 CUP/mes</div>
+            <div class="precio-lista">
+                ✓ Todo lo anterior<br>
+                ✓ Google te encuentra (SEO)<br>
+                ✓ Botón WhatsApp en cada producto<br>
+                ✓ Reporte semanal de productos más vendidos
+            </div>
+        </div>
+        
+        <div class="precio">
+            <div class="precio-nombre">Premium</div>
+            <div class="precio-valor">8,000 CUP/mes</div>
+            <div class="precio-lista">
+                ✓ Todo lo anterior<br>
+                ✓ Códigos QR impresos para tu vitrina<br>
+                ✓ Backup de tu inventario<br>
+                ✓ Respuesta en menos de 2 horas
+            </div>
+        </div>
+        
+        <p style="margin-top: 15px; font-size: 0.9em; color: #666;">*Si eres MIPYME o tienes más de 100 productos, escríbeme y ajustamos.</p>
+    </div>
+    
+    <!-- Garantía -->
+    <div class="garantia">
+        <strong>🔒 Garantía 15 días gratis</strong><br>
+        Si no te convence, te devuelvo cada peso.<br>
+        Sin contratos largos. Cancelas cuando quieras.
+    </div>
+    
+    <!-- Testimonios -->
+    <div class="section">
+        <h2>⭐ Casos reales</h2>
+        
+        <div class="testimonio">
+            "He recuperado lo que pago en una sola venta que antes perdía por falta de internet."
+            <div class="testimonio-autor">— Carlos, panadería en Cerro</div>
+        </div>
+        
+        <div class="testimonio">
+            "Mis clientes me encuentran en Google y ya no tengo que estar enviando fotos una por una."
+            <div class="testimonio-autor">— Maricela, tienda de ropa en Guanabacoa</div>
+        </div>
+    </div>
+    
+    <!-- CTA final -->
+    <div class="cta-final">
+        <h3 style="margin-bottom: 15px;">📢 Solo atiendo 10 negocios nuevos este mes</h3>
+        <a href="https://wa.me/5351234567?text=Hola%2C%20quiero%20vender%20sin%20internet" class="btn-whatsapp" style="background: white; color: #f57c00;">💬 Escríbeme al WhatsApp</a>
+        <p style="margin-top: 15px; opacity: 0.9;">Responde en menos de 1 hora</p>
+    </div>
+    
+    <div class="footer">
+        📍 La Habana, Cuba — Soporte en español — Pagas en CUP por Transfermóvil o Enzona
+    </div>
+    
+</div>
+
+<script>
+    // ============================================================
+    // 1. GENERAR MANIFEST DINÁMICAMENTE (PWA)
+    // ============================================================
+    function generarManifest() {
+        const manifest = {
+            name: "Negocio Simple - POS Offline Cuba",
+            short_name: "Negocio Simple",
+            description: "Vende sin internet en Cuba. POS y catálogo offline.",
+            start_url: ".",
+            display: "standalone",
+            theme_color: "#2c3e50",
+            background_color: "#fafafa",
+            orientation: "portrait",
+            icons: [
+                {
+                    src: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%232c3e50'/%3E%3Ctext x='50' y='67' font-size='50' text-anchor='middle' fill='white' font-family='Arial'%3ENS%3C/text%3E%3C/svg%3E",
+                    sizes: "any",
+                    type: "image/svg+xml",
+                    purpose: "any maskable"
+                }
+            ]
+        };
+        
+        // Si ya existe un manifest, no lo sobrescribimos
+        if (!document.querySelector('link[rel="manifest"]')) {
+            const blob = new Blob([JSON.stringify(manifest)], {type: 'application/json'});
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('link');
+            link.rel = 'manifest';
+            link.href = url;
+            document.head.appendChild(link);
+            console.log("✅ Manifest generado dinámicamente");
+        }
+    }
+    
+    // ============================================================
+    // 2. SERVICE WORKER AUTOCONTENIDO
+    // ============================================================
+    function registrarServiceWorker() {
+        if (!('serviceWorker' in navigator)) {
+            console.log("❌ Service Worker no soportado");
+            return;
+        }
+        
+        // El código del Service Worker como string
+        const swCode = `
+            const CACHE_NAME = 'negocio-simple-v1';
+            const urlsToCache = ['/', '/index.html'];
+            
+            self.addEventListener('install', event => {
+                event.waitUntil(
+                    caches.open(CACHE_NAME)
+                        .then(cache => cache.addAll(urlsToCache))
+                        .then(() => self.skipWaiting())
+                );
+            });
+            
+            self.addEventListener('fetch', event => {
+                event.respondWith(
+                    caches.match(event.request)
+                        .then(response => response || fetch(event.request))
+                );
+            });
+            
+            self.addEventListener('activate', event => {
+                event.waitUntil(
+                    caches.keys().then(keys => {
+                        return Promise.all(
+                            keys.filter(k => k !== CACHE_NAME).map(k => caches.delete(k))
+                        );
+                    })
+                );
+            });
+        `;
+        
+        // Crear un blob y registrarlo
+        const blob = new Blob([swCode], {type: 'application/javascript'});
+        const swUrl = URL.createObjectURL(blob);
+        
+        navigator.serviceWorker.register(swUrl)
+            .then(reg => {
+                console.log("✅ Service Worker registrado:", reg);
+                // Mostrar banner de instalación después de un tiempo
+                setTimeout(() => {
+                    if (!window.matchMedia('(display-mode: standalone)').matches) {
+                        document.getElementById('installBanner').style.display = 'block';
+                        setTimeout(() => {
+                            document.getElementById('installBanner').style.display = 'none';
+                        }, 8000);
+                    }
+                }, 2000);
+            })
+            .catch(err => console.log("❌ Error SW:", err));
+    }
+    
+    // ============================================================
+    // 3. FUNCIÓN PARA INSTALAR MANUALMENTE (GUÍA)
+    // ============================================================
+    function instalarApp() {
+        alert("📱 Para instalar esta app:\n\nEn Chrome/Edge:\n1. Toca los tres puntos ⋮\n2. Selecciona 'Agregar a pantalla de inicio'\n\nEn Samsung Internet:\n1. Toca el menú ☰\n2. Selecciona 'Agregar a pantalla de inicio'\n\n¡Tu negocio también puede tener su propia app!");
+    }
+    
+    function alertDemo(producto) {
+        alert(`✨ Demo: "${producto}"\n\nEn la versión real de tu negocio, este botón abriría WhatsApp directamente con el mensaje listo para que el cliente te contacte.\n\n¿Quieres que tu catálogo tenga esta función? Escríbeme al WhatsApp.`);
+    }
+    
+    // ============================================================
+    // 4. DETECTAR SI YA ESTÁ INSTALADA COMO APP
+    // ============================================================
+    function detectarModoApp() {
+        if (window.matchMedia('(display-mode: standalone)').matches) {
+            console.log("📱 Ejecutándose como app instalada");
+            // Opcional: ocultar el banner de instalación si ya está instalada
+            const banner = document.getElementById('installBanner');
+            if (banner) banner.style.display = 'none';
+        }
+    }
+    
+    // ============================================================
+    // 5. INICIALIZAR TODO AL CARGAR
+    // ============================================================
+    window.addEventListener('load', () => {
+        generarManifest();
+        registrarServiceWorker();
+        detectarModoApp();
+    });
+</script>
+
 </body>
 </html>
